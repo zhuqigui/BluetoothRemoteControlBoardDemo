@@ -1,1 +1,2 @@
 # BluetoothRemoteControlBoardDemo
+#此java测试程序是解析蓝牙BLE遥控板的Demo程序，后续会开源
