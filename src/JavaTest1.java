@@ -3,7 +3,7 @@ import java.text.NumberFormat;
 public class JavaTest1 {
     public static void main(String[] args) {
        //String mBufferRead="0100025e4105664f06e27c00000e000000000000";
-         String mBufferRead="0100fcdace01a6f5fc3c6400063f000881900202";
+         //String mBufferRead="0100fcdace01a6f5fc3c6400063f000881900202";
         /**
          * 01----表示该数据包为欧拉角数据帧
          * 00----reserved
@@ -16,9 +16,9 @@ public class JavaTest1 {
          * 81 90 ---x 10 00 0001 1001 0000 表示移动事件，x=400
          * 02 02---y y=514
          */
-        String dataType=mBufferRead.substring(0,2);
-        String y=mBufferRead.substring(4,10);
-        String x=mBufferRead.substring(10,16);
+//        String dataType=mBufferRead.substring(0,2);
+//        String y=mBufferRead.substring(4,10);
+//        String x=mBufferRead.substring(10,16);
 //        String z=mBufferRead.substring(16,22);
 //        String times=mBufferRead.substring(22,28);
 //        String trigger=mBufferRead.substring(28,30);
@@ -30,10 +30,10 @@ public class JavaTest1 {
         //System.out.println("xMoveEvent=="+xMoveEvent+",yMoveEvent=="+yMoveEvent);
         //y="fcdace";x="01a6f5";z="fc3c64";
 
-        Utils mUtils=new Utils();
-        mUtils.dataTypeEvent("01");//1
-        mUtils.dataTypeEvent("02");//2
-        mUtils.dataTypeEvent("20");//32
+//        Utils mUtils=new Utils();
+//        mUtils.dataTypeEvent("01");//1
+//        mUtils.dataTypeEvent("02");//2
+//        mUtils.dataTypeEvent("20");//32
 
         //欧拉数测试
 //        System.out.println("y=="+ONaUtils.getInstance().getONaYPoint(y)); //fcdace
@@ -52,7 +52,20 @@ public class JavaTest1 {
 //        ONaUtils.getInstance().getMoveEventYPoint("0202");
 
         //4元数测试
-
+        String fourYuanData="0200fcdace01a6f5fc3c6400063f000881900202";
+        /**
+         * 02----表示该数据包为欧拉角数据帧
+         * 00----reserved
+         * fc da ce --w
+         * 01 a6 f5 --y -818.2478
+         * fc 3c 64 --x 10.8277
+         * 00 06 3f --z -814.1924
+         * 00 ----扳机是松开的
+         * ff 08 ----power button 是按下的
+         * 81 90 ---x 10 00 0001 1001 0000 表示移动事件，x=400
+         * 02 02---y y=514
+         */
+        FourYuanNumberUtils.getInstance().getFourYuanDataWValue("123456");
     }
 
 

@@ -25,6 +25,11 @@ public class Utils {
     String s;
     double v;
     NumberFormat format1;
+
+    String w1,w2,w3;
+    int w1Result,w2Result,w3Result;
+    double wv;
+    String ws;
     /**
      * 单个16进制字符串转为10进制
      * @param hex 单个16进制字符串
@@ -229,5 +234,25 @@ public class Utils {
         fuhaoweiIsZhen=false;
         fuhaowei=-1;
         return s;
+    }
+    public String getWValue(String w){
+        w1=w.substring(0,2);
+        w2=w.substring(2,4);
+        w3=w.substring(4,6);
+        //System.out.println("w1=="+w1+",w2=="+w2+",w3=="+w3);
+        w1Result=oneHexToInt(w1);
+        w2Result=oneHexToInt(w2);
+        w3Result=oneHexToInt(w3);
+        //System.out.println("w1Result=="+w1Result+",w2Result=="+w2Result+",w3Result=="+w3Result);
+        //计算总坐标结果并显示小数点后4位
+        format1=NumberFormat.getNumberInstance() ;
+        format1.setMaximumFractionDigits(8);
+        wv = (w1Result * 256 * 256 + w2Result * 256 + w3Result) ;
+        //System.out.print("wv=="+wv);
+        wv =wv/0x7FFFFF;
+        ws= format1.format(wv);
+//        System.out.print("wv=="+wv+",ws=="+ws);
+//        System.out.println("wv=="+wv);
+        return ws;
     }
 }
